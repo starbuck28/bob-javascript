@@ -8,8 +8,11 @@ export const hey = (message) => {
   //check for all uppercase letters
   let checkLetterCase = messageArray.map(element => element.toUpperCase())
   console.log(checkLetterCase)
- if (messageArray.join("") == checkLetterCase.join("")) {
+ if (messageArray.join("") === checkLetterCase.join("")) {
    return "Whoa, chill out!"
+ }
+ if (messageArray.find(element => element === "?")) {
+     return "Sure."
  }
   return "Whatever."
 };
