@@ -15,10 +15,11 @@ const isQuestion = (messageArray) => {
 
 export const hey = (message) => {
     let messageArray = message.split("");
-    if (isShouting(messageArray)) {
+    if (isShouting(messageArray) && isQuestion(messageArray)) {
+        return "Calm down, I know what I'm doing!"
+    } else if (isShouting(messageArray)) {
         return "Whoa, chill out!"
-    }
-    if (isQuestion(messageArray)) {
+    } else if (isQuestion(messageArray)) {
         return "Sure."
     }
     return "Whatever."
