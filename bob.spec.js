@@ -6,12 +6,12 @@ describe('Bob', () => {
     expect(result).toEqual('Whatever.');
   });
 
-  xtest('shouting', () => {
+  test('shouting', () => {
     const result = hey('WATCH OUT!');
     expect(result).toEqual('Whoa, chill out!');
   });
 
-  xtest('shouting gibberish', () => {
+  test('shouting gibberish', () => {
     const result = hey('FCECDFCAAB');
     expect(result).toEqual('Whoa, chill out!');
   });
