@@ -3,16 +3,23 @@
 // convenience to get you started writing code faster.
 //
 
+
+const isShouting = (messageArray) => {
+    let checkLetterCase = messageArray.map(element => element.toUpperCase())
+    return messageArray.join("") === checkLetterCase.join("")
+}
+
+const isQuestion = (messageArray) => {
+    return messageArray.find(element => element === "?")
+}
+
 export const hey = (message) => {
-  let messageArray = message.split("");
-  //check for all uppercase letters
-  let checkLetterCase = messageArray.map(element => element.toUpperCase())
-  console.log(checkLetterCase)
- if (messageArray.join("") === checkLetterCase.join("")) {
-   return "Whoa, chill out!"
- }
- if (messageArray.find(element => element === "?")) {
-     return "Sure."
- }
-  return "Whatever."
+    let messageArray = message.split("");
+    if (isShouting(messageArray)) {
+        return "Whoa, chill out!"
+    }
+    if (isQuestion(messageArray)) {
+        return "Sure."
+    }
+    return "Whatever."
 };
