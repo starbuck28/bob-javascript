@@ -23,16 +23,34 @@ export const hey = (message) => {
         message = message.slice(0, -1)
     }
 
-    if (doesNotContainLetters(message) && isAQuestion(message)) {
-        return "Sure."
-    } else if (doesNotContainLetters(message)) {
-        return "Whatever."
-    } else if (isAQuestion(message) && isShouting(message)) {
-            return "Calm down, I know what I'm doing!"
-        } else if (isAQuestion(message)) {
+    // if (doesNotContainLetters(message) && isAQuestion(message)) {
+    //     return "Sure."
+    // } else if (doesNotContainLetters(message)) {
+    //     return "Whatever."
+    // } else if (isAQuestion(message) && isShouting(message)) {
+    //         return "Calm down, I know what I'm doing!"
+    //     } else if (isAQuestion(message)) {
+    //         return "Sure."
+    //     } else if (isShouting(message)) {
+    //         return "Whoa, chill out!"
+    //     }
+    // return "Whatever."
+
+    if (doesNotContainLetters(message)) {
+        if (isAQuestion(message)) {
             return "Sure."
-        } else if (isShouting(message)) {
-            return "Whoa, chill out!"
+        } else {
+            return "Whatever."
         }
+    }
+
+    if (isAQuestion(message) && isShouting(message)) {
+        return "Calm down, I know what I'm doing!"
+    } else if (isAQuestion(message)) {
+        return "Sure."
+    } else if (isShouting(message)) {
+        return "Whoa, chill out!"
+    }
+
     return "Whatever."
 }
