@@ -1,38 +1,31 @@
-const isAQuestion = (message) => {
-    return message[message.length - 1] === "?"
-}
+const isAQuestion = (message) => { return message[message.length - 1] === "?" }
 
-const matchCharacterArray = (message, regex) => {
-    return message.match(regex)
-}
+const matchCharacterArray = (message, regex) => { return message.match(regex) }
 
-const isShouting = (message) => {
-    return message === message.toUpperCase()
-}
+const isShouting = (message) => { return message === message.toUpperCase() }
 
-const doesntContainLetters = (message) => {
-    let results = matchCharacterArray(message, /[a-zA-Z]/g)
-    return results === null
+const doesNotContainLetters = (message) => {
+    return matchCharacterArray(message, /[a-zA-Z]/g) === null
 }
 
 const messageIsEmpty = (message) => {
     return /^\s+$/.test(message) || message.length === 0
 }
 
+const messageEndsInSpace = (message) => {
+    return message[message.length -1] === " "
+}
+
 export const hey = (message) => {
+    if (messageIsEmpty(message)) {return "Fine. Be that way!"}
 
-    //Checks to see if string only contains letters
-    let onlyHasLetters = /^[a-zA-Z]+$/.test(message);
-    let onlyHasNumbers = /^[0-9]+$/.test(message);
-    // console.log("Has Letters: " + onlyHasLetters)
-    // console.log("Only has numbers: " + onlyHasNumbers)
-
-    if (messageIsEmpty(message)) {
-        return "Fine. Be that way!"
+    while (messageEndsInSpace(message)) {
+        message = message.slice(0, -1)
     }
-    if (doesntContainLetters(message) && isAQuestion(message)) {
-            return "Sure."
-    } else if (doesntContainLetters(message)) {
+
+    if (doesNotContainLetters(message) && isAQuestion(message)) {
+        return "Sure."
+    } else if (doesNotContainLetters(message)) {
         return "Whatever."
     } else if (isAQuestion(message) && isShouting(message)) {
             return "Calm down, I know what I'm doing!"
